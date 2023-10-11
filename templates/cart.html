@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_tags %}
+{% block css %}
+
+    <!-- Favicon -->
+    <link href="{% static 'img/fevicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+          rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block cantent %}
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="/">Home</a>
+                    <a class="breadcrumb-item text-dark" href="shop">Shop</a>
+                    <span class="breadcrumb-item active">Shopping Cart</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+
+    <!-- Cart Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-lg-8 table-responsive mb-5">
+                <table class="table table-light table-borderless table-hover text-center mb-0">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Images</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Remove</th>
+                    </tr>
+                    </thead>
+                    <tbody class="align-middle">
+                    {% for product in products %}
+                        <tr>
+                            <td class="align-middle"><img src="{{ product.image.image.url }}" alt="Images"
+                                                          style="width: 50px;">{{ product.name }}
+                            </td>
+                            <td class="align-middle">${{ product.price }}</td>
+                            <td onload="calculate_total({{ product.price }}, {{ product.id }})">
+                                <div class="input-group quantity mx-auto" style="width: 100px;">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-primary btn-minus"
+                                                onclick="decrement({{ product.price }},{{ product.id }})">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" id="product_count_{{ product.id }}"
+                                           class="form-control form-control-sm bg-secondary border-0 text-center quantity-amount"
+                                           value="{{ product.count }}" placeholder=""
+                                           aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-sm btn-primary btn-plus"
+                                                onclick="increment({{ product.price }},{{ product.id }})">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <span id="total_price_{{ product.id }}">${% total_price  product.count product.price %}</span>
+                            </td>
+                            <td class="align-middle">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="id" value="{{ product.id }}">
+                                    <button class="btn btn-sm btn-danger" type="submit"><i class="fa fa-times"></i>
+                                    </button>
+                                </form>
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart End -->
+{% endblock %}
+
+
+{% block js %}
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="{% static 'mail/jqBootstrapValidation.min.js' %}"></script>
+    <script src="{% static 'mail/contact.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+    <script>
+        const increment = (price, id) => {
+            fetch('http://127.0.0.1:8000/increment-count', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: id,
+
+                })
+            }).then(rsp => rsp.json()).then(response => console.log(response))
+            calculate_total(price, id, 1)
+        }
+        const decrement = (price, id) => {
+            fetch('http://127.0.0.1:8000/decrement-count', {
+                method: 'POST',
+                body: JSON.stringify({
+                    id: id,
+
+                })
+            }).then(rsp => rsp.json()).then(response => console.log(response))
+            calculate_total(price, id, 2)
+        }
+        const calculate_total = (price, id, value) => {
+            let product_count = document.getElementById('product_count_' + id).value
+            if (value === 1) {
+                product_count++
+            } else {
+                if (parseInt(product_count) !== 0) {
+                    product_count--
+                }
+            }
+            const total_price = product_count * price
+            document.getElementById('total_price_' + id).innerHTML = '$' + `${total_price}`
+
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+{% block cantent %}
+
+    <div class="container">
+        {% if message %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+{#            <label for="first_name">First name</label>#}
+{#            <input type="text" name="first_name" id="first_name"/><br>#}
+{#            <label for="last_name">Last name</label>#}
+{#            <input type="text" name="last_name" id="last_name"/><br>#}
+{#            <label for="email">Email</label>#}
+{#            <input type="text" name="email" id="email"/><br>#}
+{#            <label for="username">Username</label>#}
+{#            <input type="text" name="username" id="username"/><br>#}
+{#            <label for="password1">Password</label>#}
+{#            <input type="password" name="password1" id="password1">#}
+{#            <label for="password2">Password confirm</label>#}
+{#            <input type="password" name="password2" id="password2">#}
+            {{ form.as_p }}
+            <button type="submit">Ok</button>
+            <br><br>
+            <p>Do you have an account ?<a href="login">Login</a></p>
+        </form>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="{% static 'mail/jqBootstrapValidation.min.js' %}"></script>
+    <script src="{% static 'mail/contact.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
