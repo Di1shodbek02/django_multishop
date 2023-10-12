@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
 
     # custom
     'main',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -133,7 +135,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 
 LOGIN_URL = '/account/login'
-
+AUTH_USER_MODEL = 'accounts.UserData'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

@@ -3,9 +3,9 @@ import json
 from django.contrib import messages
 from django.db.models import Q
 from django.http import JsonResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.views import View
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, DeleteView
 
 from .form import ProductForm
 from .models import ShoppingCart, Product, Picture
@@ -100,6 +100,9 @@ def detail(request):
 
 
 class ShopView(View):
+    template_name = 'shop.html'
+    context = {}
+
     def get(self, request):
         products = Product.objects.all()
         product_data = []
@@ -107,7 +110,8 @@ class ShopView(View):
             image = Picture.objects.filter(product=product).first()
             product.image = image
             product_data.append(product)
-        return render(request, 'shop.html', {'products': product_data})
+        self.context.update({'products': product_data})
+        return render(request, self.template_name, self.context)
 
     def post(self, request):
         id = request.POST.get('id')
@@ -145,17 +149,11 @@ class AddProductView(View):
         description = request.POST.get('product_description')
         author = request.user  # Assuming request.user represents the product's author
 
-        # Get the selected category (assuming you have a form field for category)
-        # category = CategoryView.objects.filter(pk=request.POST.get('product_category')).first()
-        #
-        # # Create the Product object with all required fields set
-        # print(category)
         product = Product.objects.create(
             name=name,
             price=price,
             description=description,
-            user=author,  # Change 'author' to 'user'
-            # category=category  # Set the category
+            user=author,
         )
 
         images = request.FILES.getlist('product_image')  # Correctly access the uploaded files
@@ -167,3 +165,5 @@ class AddProductView(View):
             )
             picture.save()
         return redirect('/')
+
+

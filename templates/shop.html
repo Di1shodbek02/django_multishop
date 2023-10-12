@@ -200,7 +200,7 @@
                             <div class="product-item bg-light mb-4">
                                 <div class="product-img position-relative overflow-hidden">
                                     <img class="img-fluid w-100" src="{{ product.image.image.url }}" alt="">
-                                    <div class="product-action">
+                                    <div class="product-action" style="height: 300px !important;">
                                         <form method="post">
                                             {% csrf_token %}
                                             <input type="hidden" name="id" value="{{ product.id }}"/>
@@ -218,7 +218,7 @@
                                 </div>
                                 <div class="text-center py-4">
                                     <a class="h6 text-decoration-none text-truncate"
-                                       href="">{{ product.name }}</a>
+                                       href="detail">{{ product.name }}</a>
                                     <div class="d-flex align-items-center justify-content-center mt-2">
                                         <h5>${{ product.price }}</h5>
                                         <h6 class="text-muted ml-2">

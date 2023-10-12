@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-12 19:01+0500\n"
+"POT-Creation-Date: 2023-10-12 20:51+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: accounts/apps.py:7
+#, fuzzy
+#| msgid "My Account"
+msgid "accounts"
+msgstr "Мой счет"
 
 #: main/apps.py:8
 msgid "main"
@@ -356,18 +362,18 @@ msgstr "Мужская Мода"
 msgid "Women Fashion"
 msgstr "Женская Мода"
 
-#: templates/index.html:98 templates/index.html:106 templates/index.html:376
-#: templates/index.html:386
+#: templates/index.html:98 templates/index.html:106 templates/index.html:373
+#: templates/index.html:383
 #, python-format
 msgid "Save 20%%"
 msgstr "Сэкономьте 20%%"
 
-#: templates/index.html:99 templates/index.html:107 templates/index.html:377
+#: templates/index.html:99 templates/index.html:107 templates/index.html:374
 msgid "Special Offer"
 msgstr "Специальное предложение"
 
-#: templates/index.html:100 templates/index.html:108 templates/index.html:378
-#: templates/index.html:388
+#: templates/index.html:100 templates/index.html:108 templates/index.html:375
+#: templates/index.html:385
 #, fuzzy
 #| msgid "Shop"
 msgid "Shop Now"
@@ -416,7 +422,7 @@ msgstr "Камера"
 msgid "Category Name"
 msgstr "Название категории"
 
-#: templates/index.html:387
+#: templates/index.html:384
 msgid "Special Offe"
 msgstr "Специальное предложение"
 
