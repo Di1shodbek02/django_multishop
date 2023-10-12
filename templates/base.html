@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 
 <head>
@@ -20,23 +21,26 @@
     <div class="row bg-secondary py-1 px-xl-5">
         <div class="col-lg-6 d-none d-lg-block">
             <div class="d-inline-flex align-items-center h-100">
-                <a class="text-body mr-3" href="">About</a>
-                <a class="text-body mr-3" href="contact">Contact</a>
-                <a class="text-body mr-3" href="">Help</a>
-                <a class="text-body mr-3" href="">FAQs</a>
+                <a class="text-body mr-3" href="">{% translate 'About us' %}</a>
+                <a class="text-body mr-3" href="">{% translate 'Contact' %}</a>
+                <a class="text-body mr-3" href="">{% translate 'Help' %}</a>
+                <a class="text-body mr-3" href="">{% translate 'FAQs' %}</a>
             </div>
         </div>
         <div class="col-lg-6 text-center text-lg-right">
             <div class="d-inline-flex align-items-center">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My
-                        Account
+                    <button type="button" class="btn btn-sm btn-light dropdown-toggle"
+                            data-toggle="dropdown">{% translate 'My Account' %}
                     </button>
 
                     <div class="dropdown-menu dropdown-menu-right">
-                        <button class="dropdown-item" type="button"><a href="/accounts/register"> Register </a></button>
-                        <button class="dropdown-item" type="button"><a href="/accounts/login">Login</a></button>
-                        <button class="dropdown-item" type="button"><a href="/accounts/logout">{{ user.username }}</a></button>
+                        <button class="dropdown-item" type="button"><a
+                                href="/accounts/register"> {% translate 'Register' %} </a></button>
+                        <button class="dropdown-item" type="button"><a
+                                href="/accounts/login">{% translate 'Login' %}</a></button>
+                        <button class="dropdown-item" type="button"><a href="/accounts/logout">{{ user.username }}</a>
+                        </button>
                     </div>
                 </div>
                 <div class="btn-group mx-2">
@@ -54,7 +58,6 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <button class="dropdown-item" type="button">RU</button>
                         <button class="dropdown-item" type="button">EN</button>
-{#                        <button class="dropdown-item" type="button">RU</button>#}
                     </div>
                 </div>
             </div>
@@ -75,8 +78,8 @@
     <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
         <div class="col-lg-4">
             <a href="" class="text-decoration-none">
-                <span class="h1 text-uppercase text-primary bg-dark px-2">Multi</span>
-                <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Shop</span>
+                <span class="h1 text-uppercase text-primary bg-dark px-2">{% translate 'Multi' %}</span>
+                <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">{% translate 'Shop' %}</span>
             </a>
         </div>
         <div class="col-lg-4 col-6 text-left">
@@ -92,7 +95,7 @@
             </form>
         </div>
         <div class="col-lg-4 col-6 text-right">
-            <p class="m-0">Murojat uchun telefon raqam</p>
+            <p class="m-0">{% translate 'Contact phone number' %}</p>
             <h5 class="m-0">📞 +998 88 158 22 25</h5>
         </div>
     </div>
@@ -106,7 +109,7 @@
         <div class="col-lg-3 d-none d-lg-block">
             <a class="btn d-flex align-items-center justify-content-between bg-primary w-100" data-toggle="collapse"
                href="#navbar-vertical" style="height: 65px; padding: 0 30px;">
-                <h6 class="text-dark m-0"><i class="fa fa-bars mr-2"></i>Categories</h6>
+                <h6 class="text-dark m-0"><i class="fa fa-bars mr-2"></i>{% translate 'Categories' %}</h6>
                 <i class="fa fa-angle-down text-dark"></i>
             </a>
             <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light"
@@ -116,20 +119,20 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dresses <i
                                 class="fa fa-angle-right float-right mt-1"></i></a>
                         <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-                            <a href="" class="dropdown-item">Men's Dresses</a>
-                            <a href="" class="dropdown-item">Women's Dresses</a>
-                            <a href="" class="dropdown-item">Baby's Dresses</a>
+                            <a href="" class="dropdown-item">{% translate "Men's Dresses" %}</a>
+                            <a href="" class="dropdown-item">{% translate "Women's Dresses" %}</a>
+                            <a href="" class="dropdown-item">{% translate "Baby's Dresses" %}</a>
                         </div>
                     </div>
-                    <a href="" class="nav-item nav-link">Shirts</a>
-                    <a href="" class="nav-item nav-link">Jeans</a>
-                    <a href="" class="nav-item nav-link">Swimwear</a>
-                    <a href="" class="nav-item nav-link">Sleepwear</a>
-                    <a href="" class="nav-item nav-link">Sportswear</a>
-                    <a href="" class="nav-item nav-link">Jumpsuits</a>
-                    <a href="" class="nav-item nav-link">Blazers</a>
-                    <a href="" class="nav-item nav-link">Jackets</a>
-                    <a href="" class="nav-item nav-link">Shoes</a>
+                    <a href="" class="nav-item nav-link">{% translate 'Shirts' %}</a>
+                    <a href="" class="nav-item nav-link">{% translate 'Jeans' %}</a>
+                    <a href="" class="nav-item nav-link">{% translate 'Swimwear' %}</a>
+                    <a href="" class="nav-item nav-link">{% translate 'Sleepwear' %}</a>
+                    <a href="" class="nav-item nav-link">{% translate 'Sportswear' %}</a>
+                    <a href="" class="nav-item nav-link">{% translate 'Jumpsuits' %}</a>
+                    <a href="" class="nav-item nav-link">{% translate 'Blazers' %}</a>
+                    <a href="" class="nav-item nav-link">{% translate 'Jackets' %}</a>
+                    <a href="" class="nav-item nav-link">{% translate 'Shoes' %}</a>
                 </div>
             </nav>
         </div>
@@ -154,32 +157,32 @@
                         <a href="/" class="nav-item nav-link
                         {% if request.path == home %}
                          active
-                        {% endif %}">Home</a>
+                        {% endif %}">{% translate 'Home' %}</a>
                         <a href="shop" class="nav-item nav-link
                         {% if request.path == shop %}
                         active
-                        {% endif %}">Shop</a>
+                        {% endif %}">{% translate 'Shop' %}</a>
                         <a href="detail" class="nav-item nav-link
                         {% if request.path == detail %}
                         active
-                        {% endif %}">Shop Detail</a>
+                        {% endif %}">{% translate 'Shop Detail' %}</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle {% if request.path == cart %}
                                 active
                                 {% elif request.path == checkout %}
                                 active
-                                {% endif %}" data-toggle="dropdown">Pages <i
+                                {% endif %}" data-toggle="dropdown">{% translate 'Pages' %}<i
                                     class="fa fa-angle-down mt-1"></i></a>
                             <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
                                 <a href="cart" class="dropdown-item
-                                ">Shopping Cart</a>
-                                <a href="checkout" class="dropdown-item">Checkout</a>
+                                ">{% translate 'Shopping Cart' %}</a>
+                                <a href="checkout" class="dropdown-item">{% translate 'Checkout' %}</a>
                             </div>
                         </div>
                         <a href="contact" class="nav-item nav-link
                         {% if request.path == contact %}
                         active
-                        {% endif %}">Contact</a>
+                        {% endif %}">{% translate 'Contact' %}</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                         <a href="" class="btn px-0">
@@ -206,9 +209,8 @@
 <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
     <div class="row px-xl-5 pt-5">
         <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
-            <h5 class="text-secondary text-uppercase mb-4">Get In Touch</h5>
-            <p class="mb-4">No dolore ipsum accusam no lorem. Invidunt sed clita kasd clita et et dolor sed dolor. Rebum
-                tempor no vero est magna amet no</p>
+            <h5 class="text-secondary text-uppercase mb-4">{% translate 'Get In Touch' %}</h5>
+            <p class="mb-4">{% translate 'No dolore ipsum accusam no lorem. Invidunt sed clita kasd clita et et dolor sed dolor. Rebumtempor no vero est magna amet no' %}</p>
             <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>128 Odil MFY, Ishtixon, Samarqand</p>
             <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>ahmatovdilshodbek@gmail.com</p>
             <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+998 88 158 22 25</p>
@@ -216,30 +218,42 @@
         <div class="col-lg-8 col-md-12">
             <div class="row">
                 <div class="col-md-4 mb-5">
-                    <h5 class="text-secondary text-uppercase mb-4">Quick Shop</h5>
+                    <h5 class="text-secondary text-uppercase mb-4">{% translate 'Quick Shop' %}</h5>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-secondary mb-2" href="/"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                        <a class="text-secondary mb-2" href="shop"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
-                        <a class="text-secondary mb-2" href="detail"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
-                        <a class="text-secondary mb-2" href="cart"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                        <a class="text-secondary mb-2" href="checkout"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
-                        <a class="text-secondary" href="contact"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                        <a class="text-secondary mb-2" href="/"><i
+                                class="fa fa-angle-right mr-2"></i>{% translate 'Home' %}</a>
+                        <a class="text-secondary mb-2" href="shop"><i
+                                class="fa fa-angle-right mr-2"></i>{% translate 'Our Shop' %}</a>
+                        <a class="text-secondary mb-2" href="detail"><i
+                                class="fa fa-angle-right mr-2"></i>{% translate 'Shop Detail' %}</a>
+                        <a class="text-secondary mb-2" href="cart"><i
+                                class="fa fa-angle-right mr-2"></i>{% translate 'Shopping Cart' %}</a>
+                        <a class="text-secondary mb-2" href="checkout"><i
+                                class="fa fa-angle-right mr-2"></i>{% translate 'Checkout' %}</a>
+                        <a class="text-secondary" href="contact"><i
+                                class="fa fa-angle-right mr-2"></i>{% translate 'Contact Us' %}</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
-                    <h5 class="text-secondary text-uppercase mb-4">My Account</h5>
+                    <h5 class="text-secondary text-uppercase mb-4">{% translate 'My Account' %}</h5>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-secondary mb-2" href="/"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                        <a class="text-secondary mb-2" href="shop"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
-                        <a class="text-secondary mb-2" href="detail"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
-                        <a class="text-secondary mb-2" href="cart"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                        <a class="text-secondary mb-2" href="checkout"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
-                        <a class="text-secondary" href="contact"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                        <a class="text-secondary mb-2" href="/"><i
+                                class="fa fa-angle-right mr-2"></i>{% translate 'Home' %}</a>
+                        <a class="text-secondary mb-2" href="shop"><i
+                                class="fa fa-angle-right mr-2"></i>{% translate 'Our Shop' %}</a>
+                        <a class="text-secondary mb-2" href="detail"><i
+                                class="fa fa-angle-right mr-2"></i>{% translate 'Shop Detail' %}</a>
+                        <a class="text-secondary mb-2" href="cart"><i
+                                class="fa fa-angle-right mr-2"></i>{% translate 'Shopping Cart' %}</a>
+                        <a class="text-secondary mb-2" href="checkout"><i
+                                class="fa fa-angle-right mr-2"></i>{% translate 'Checkout' %}</a>
+                        <a class="text-secondary" href="contact"><i
+                                class="fa fa-angle-right mr-2"></i>{% translate 'Contact Us' %}</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
-                    <h5 class="text-secondary text-uppercase mb-4">Newsletter</h5>
-                    <p>Duo stet tempor ipsum sit amet magna ipsum tempor est</p>
+                    <h5 class="text-secondary text-uppercase mb-4">{% translate 'Newsletter' %}</h5>
+                    <p>{% translate 'Duo stet tempor ipsum sit amet magna ipsum tempor est' %}</p>
                     <form action="">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Your Email Address">

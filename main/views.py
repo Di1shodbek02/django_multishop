@@ -1,6 +1,5 @@
 import json
 
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib import messages
 from django.db.models import Q
 from django.http import JsonResponse
@@ -22,14 +21,14 @@ class HomeView(View):
         products = Product.objects.all()[:4]
         product_data = []
         for product in products:
-            image = Picture.objects.filter(product=product).first()
+            image = Picture.objects.get(product=product)
             product.image = image
             product_data.append(product)
 
         self.context.update({'products': product_data})
         return render(request, self.template_name, self.context)
 
-    def post(self, request):
+    def post(self, request):  # noqa
         id = request.POST.get('id')
         user = request.user
         shopping_cart = ShoppingCart.objects.filter(Q(product_id=id) & Q(user=user))
@@ -129,35 +128,42 @@ def checkout(request):
     return render(request, 'checkout.html')
 
 
-class AddProductView(CreateView):
-    model = Product
-    template_name = 'add_product.html'
-    # fields = ('name', 'price', 'description')
+class AddProductView(View):
     form_class = ProductForm
+    template_name = 'add_product.html'
 
     def get(self, request):
         form = self.form_class()
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name)
 
     def post(self, request):
-        form = self.form_class(request.POST, request.FILES)
-        name = request.POST.get('name')
-        price = request.POST.get('price')
-        description = request.POST.get('description')
-        author = request.user
+        # form = self.form_class(request.POST, request.FILES)
+        # print(form.data)
 
+        name = request.POST.get('product_name')
+        price = request.POST.get('product_price')
+        description = request.POST.get('product_description')
+        author = request.user  # Assuming request.user represents the product's author
+
+        # Get the selected category (assuming you have a form field for category)
+        # category = CategoryView.objects.filter(pk=request.POST.get('product_category')).first()
+        #
+        # # Create the Product object with all required fields set
+        # print(category)
         product = Product.objects.create(
             name=name,
             price=price,
             description=description,
-            author=author
+            user=author,  # Change 'author' to 'user'
+            # category=category  # Set the category
         )
-        product.save()
-        images = request.POST.get('image')
+
+        images = request.FILES.getlist('product_image')  # Correctly access the uploaded files
+
         for image in images:
             picture = Picture.objects.create(
                 image=image,
                 product=product
             )
             picture.save()
-        return redirect('/add_product')
+        return redirect('/')
