@@ -3,7 +3,7 @@ import json
 from django.contrib import messages
 from django.db.models import Q
 from django.http import JsonResponse
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.views import View
 from django.views.generic.edit import CreateView, DeleteView
 
@@ -137,7 +137,7 @@ class AddProductView(View):
     template_name = 'add_product.html'
 
     def get(self, request):
-        form = self.form_class()
+        # form = self.form_class()
         return render(request, self.template_name)
 
     def post(self, request):
@@ -167,3 +167,27 @@ class AddProductView(View):
         return redirect('/')
 
 
+class DetailView(View):
+
+    def get(self, request, pk):
+        products = get_object_or_404(Product, pk=pk)
+        images = Picture.objects.filter(product=products).all()
+        context = {
+            'products': products,
+            'images': images,
+        }
+        return render(request, 'detail.html', context)
+
+    def post(self, request):
+        id = request.POST.get('id')
+        user = request.user
+        shopping_cart = ShoppingCart.objects.filter(Q(product_id=id) & Q(user=user))
+        if not shopping_cart:
+            shopping_cart = ShoppingCart.objects.create(
+                product_id=id,
+                user_id=user
+            )
+            shopping_cart.save()
+            messages.info(request, "Added successfully!")
+            return redirect('/cart')
+        return redirect('/cart')

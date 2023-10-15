@@ -53,11 +53,27 @@
                     </div>
                 </div>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">EN
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <button class="dropdown-item" type="button">RU</button>
-                        <button class="dropdown-item" type="button">EN</button>
+                    {#                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">EN#}
+                    {#                    </button>#}
+                    <div class="card">
+
+                        <form action="{% url 'set_language' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="text" value="{{ redirect_to }}">
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% get_available_languages as LANGUAGES %}
+                            {% get_language_info_list for LANGUAGES as languages %}
+                            <select name="language" onchange="this.form.submit()">
+                                {% for language in languages %}
+                                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                                            selected{% endif %}>
+                                        {{ language.name_local }} ({{ language.code }})
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </form>
+                        {#                        <button class="dropdown-item" type="button">EN</button>#}
+                        {#                        <button class="dropdown-item" type="button">RU</button>#}
                     </div>
                 </div>
             </div>
@@ -262,7 +278,7 @@
                             </div>
                         </div>
                     </form>
-                    <h6 class="text-secondary text-uppercase mt-4 mb-3">Follow Us</h6>
+                    <h6 class="text-secondary text-uppercase mt-4 mb-3">{% translate 'Follow Us' %}</h6>
                     <div class="d-flex">
                         <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-12 20:51+0500\n"
+"POT-Creation-Date: 2023-10-15 13:54+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgstr "Картинки"
 msgid "About us"
 msgstr "О нас"
 
-#: templates/base.html:25 templates/base.html:185 templates/contact.html:31
+#: templates/base.html:25 templates/base.html:201 templates/contact.html:31
 msgid "Contact"
 msgstr "Контакт"
 
@@ -62,7 +62,7 @@ msgstr "Помощь"
 msgid "FAQs"
 msgstr "Часто задаваемые вопросы"
 
-#: templates/base.html:34 templates/base.html:238
+#: templates/base.html:34 templates/base.html:254
 msgid "My Account"
 msgstr "Мой счет"
 
@@ -74,101 +74,101 @@ msgstr "Pегистр"
 msgid "Login"
 msgstr "Авторизоваться"
 
-#: templates/base.html:81
+#: templates/base.html:97
 msgid "Multi"
 msgstr "Мульти"
 
-#: templates/base.html:82 templates/base.html:164 templates/cart.html:33
+#: templates/base.html:98 templates/base.html:180 templates/cart.html:33
 #: templates/checkout.html:32 templates/detail.html:32 templates/shop.html:31
 msgid "Shop"
 msgstr "Магазин"
 
-#: templates/base.html:98
+#: templates/base.html:114
 msgid "Contact phone number"
 msgstr "Контактный номер телефона"
 
-#: templates/base.html:112 templates/index.html:152
+#: templates/base.html:128 templates/index.html:152
 msgid "Categories"
 msgstr "Категории"
 
-#: templates/base.html:122
+#: templates/base.html:138
 msgid "Men's Dresses"
 msgstr "Мужские платья"
 
-#: templates/base.html:123
+#: templates/base.html:139
 msgid "Women's Dresses"
 msgstr "Женские платья"
 
-#: templates/base.html:124
+#: templates/base.html:140
 msgid "Baby's Dresses"
 msgstr "Детские платья"
 
-#: templates/base.html:127
+#: templates/base.html:143
 msgid "Shirts"
 msgstr "Рубашки"
 
-#: templates/base.html:128
+#: templates/base.html:144
 msgid "Jeans"
 msgstr "Джинсы"
 
-#: templates/base.html:129
+#: templates/base.html:145
 msgid "Swimwear"
 msgstr "Купальники"
 
-#: templates/base.html:130
+#: templates/base.html:146
 msgid "Sleepwear"
 msgstr "Одежда для сна"
 
-#: templates/base.html:131
+#: templates/base.html:147
 msgid "Sportswear"
 msgstr "Спортивная одежда"
 
-#: templates/base.html:132
+#: templates/base.html:148
 msgid "Jumpsuits"
 msgstr "Комбинезоны"
 
-#: templates/base.html:133
+#: templates/base.html:149
 msgid "Blazers"
 msgstr "блейзеры"
 
-#: templates/base.html:134
+#: templates/base.html:150
 msgid "Jackets"
 msgstr "Куртки"
 
-#: templates/base.html:135 templates/index.html:187
+#: templates/base.html:151 templates/index.html:187
 msgid "Shoes"
 msgstr "Обувь"
 
-#: templates/base.html:160 templates/base.html:224 templates/base.html:241
+#: templates/base.html:176 templates/base.html:240 templates/base.html:257
 #: templates/cart.html:32 templates/checkout.html:31 templates/contact.html:30
 #: templates/detail.html:31 templates/shop.html:30
 msgid "Home"
 msgstr "Главни"
 
-#: templates/base.html:168 templates/base.html:228 templates/base.html:245
+#: templates/base.html:184 templates/base.html:244 templates/base.html:261
 #: templates/detail.html:33
 msgid "Shop Detail"
 msgstr "Подробности магазина"
 
-#: templates/base.html:174
+#: templates/base.html:190
 msgid "Pages"
 msgstr "Страницы"
 
-#: templates/base.html:178 templates/base.html:230 templates/base.html:247
+#: templates/base.html:194 templates/base.html:246 templates/base.html:263
 #: templates/cart.html:34
 msgid "Shopping Cart"
 msgstr "Корзина"
 
-#: templates/base.html:179 templates/base.html:232 templates/base.html:249
+#: templates/base.html:195 templates/base.html:248 templates/base.html:265
 #: templates/checkout.html:33
 msgid "Checkout"
 msgstr "Проверить"
 
-#: templates/base.html:212
+#: templates/base.html:228
 msgid "Get In Touch"
 msgstr "Связаться"
 
-#: templates/base.html:213
+#: templates/base.html:229
 msgid ""
 "No dolore ipsum accusam no lorem. Invidunt sed clita kasd clita et et dolor "
 "sed dolor. Rebumtempor no vero est magna amet no"
@@ -176,25 +176,29 @@ msgstr ""
 "No dolore ipsum accusam no lorem. Invidunt sed clita kasd clita et et "
 "dolorСед печаль. Rebumtempor no vero est magna amet no"
 
-#: templates/base.html:221
+#: templates/base.html:237
 msgid "Quick Shop"
 msgstr "Быстрый магазин"
 
-#: templates/base.html:226 templates/base.html:243
+#: templates/base.html:242 templates/base.html:259
 msgid "Our Shop"
 msgstr "Наш магазин"
 
-#: templates/base.html:234 templates/base.html:251 templates/contact.html:41
+#: templates/base.html:250 templates/base.html:267 templates/contact.html:41
 msgid "Contact Us"
 msgstr "Связаться с нами"
 
-#: templates/base.html:255
+#: templates/base.html:271
 msgid "Newsletter"
 msgstr "Новостная рассылка"
 
-#: templates/base.html:256
+#: templates/base.html:272
 msgid "Duo stet tempor ipsum sit amet magna ipsum tempor est"
 msgstr "Duo stet tempor ipsum sit amet magna ipsum tempor est"
+
+#: templates/base.html:281
+msgid "Follow Us"
+msgstr "Подписывайтесь на нас"
 
 #: templates/cart.html:49
 #, fuzzy
@@ -358,9 +362,22 @@ msgstr "Сообщения"
 msgid "Men Fashion"
 msgstr "Мужская Мода"
 
+#: templates/index.html:58 templates/index.html:100 templates/index.html:108
+#: templates/index.html:375 templates/index.html:385
+#, fuzzy
+#| msgid "Shop"
+msgid "Shop Now"
+msgstr "Купить сейчас"
+
 #: templates/index.html:67
 msgid "Women Fashion"
 msgstr "Женская Мода"
+
+#: templates/index.html:87
+#, fuzzy
+#| msgid "Shop"
+msgid "Shop Now<"
+msgstr "Купить сейчас"
 
 #: templates/index.html:98 templates/index.html:106 templates/index.html:373
 #: templates/index.html:383
@@ -371,13 +388,6 @@ msgstr "Сэкономьте 20%%"
 #: templates/index.html:99 templates/index.html:107 templates/index.html:374
 msgid "Special Offer"
 msgstr "Специальное предложение"
-
-#: templates/index.html:100 templates/index.html:108 templates/index.html:375
-#: templates/index.html:385
-#, fuzzy
-#| msgid "Shop"
-msgid "Shop Now"
-msgstr "Магазин"
 
 #: templates/index.html:123
 #, fuzzy
@@ -621,7 +631,7 @@ msgstr[1] ""
 #: venv/lib/python3.11/site-packages/django/forms/fields.py:347
 #: venv/lib/python3.11/site-packages/django/forms/fields.py:386
 msgid "Enter a number."
-msgstr ""
+msgstr "Введите номер."
 
 #: venv/lib/python3.11/site-packages/django/core/validators.py:463
 #, python-format
@@ -789,7 +799,7 @@ msgstr ""
 
 #: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1845
 msgid "Email address"
-msgstr ""
+msgstr "Адрес электронной почты"
 
 #: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1870
 msgid "File path"
@@ -900,8 +910,10 @@ msgid "File"
 msgstr ""
 
 #: venv/lib/python3.11/site-packages/django/db/models/fields/files.py:393
+#, fuzzy
+#| msgid "Pages"
 msgid "Image"
-msgstr ""
+msgstr "Изображение"
 
 #: venv/lib/python3.11/site-packages/django/db/models/fields/json.py:26
 msgid "A JSON object"
