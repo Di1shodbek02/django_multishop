@@ -119,7 +119,7 @@
     <script src="{% static 'js/main.js' %}"></script>
     <script>
         const increment = (price, id) => {
-            fetch('http://127.0.0.1:8000/increment-count', {
+            fetch('http://127.0.0.1:8000/{{ LANGUAGE_CODE }}/increment-count', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -132,7 +132,7 @@
             calculate_total(price, id, 1)
         }
         const decrement = (price, id) => {
-            fetch('http://127.0.0.1:8000/decrement-count', {
+            fetch('http://127.0.0.1:8000/{{ LANGUAGE_CODE }}/decrement-count', {
                 method: 'POST',
                 body: JSON.stringify({
                     id: id,

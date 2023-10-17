@@ -84,7 +84,7 @@
                                         lorem
                                         magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
                                     <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
-                                       href="#">{% translate 'Shop Now<' %}/a>
+                                       href="#">{% translate 'Shop Now' %}</a>
                                 </div>
                             </div>
                         </div>
@@ -330,8 +330,13 @@
                                             class="fa fa-shopping-cart"></i></button>
 
                                 </form>
-                                <button class="btn btn-outline-dark btn-square"><i class="far fa-heart"></i>
-                                </button>
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="id" value="{{ user.id }}">
+                                    <button class="btn btn-outline-dark btn-square" type="submit"><i
+                                            class="far fa-heart"></i>
+                                    </button>
+                                </form>
                                 <button class="btn btn-outline-dark btn-square"><i class="fa fa-sync-alt"></i>
                                 </button>
                                 <button class="btn btn-outline-dark btn-square"><i class="fa fa-search"></i>
@@ -339,7 +344,8 @@
                             </div>
                         </div>
                         <div class="text-center py-4">
-                            <a class="h6 text-decoration-none text-truncate" href="{% url 'detail' product.id  %}">{{ product.name }}</a>
+                            <a class="h6 text-decoration-none text-truncate"
+                               href="{% url 'detail' product.id %}">{{ product.name }}</a>
                             <div class="d-flex align-items-center justify-content-center mt-2">
                                 <h5>${{ product.price }}</h5>
                                 <h6 class="text-muted ml-2">

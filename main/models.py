@@ -37,3 +37,11 @@ class ShoppingCart(models.Model):
         validators=[MinValueValidator(1)], default=1
     )
     uploaded_date = models.DateTimeField(auto_now_add=True)
+
+
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.ForeignKey(Product, on_delete=models.CASCADE)
+    images = models.ImageField(upload_to='pics')
+    price = models.FloatField()
+    uploaded_date = models.DateTimeField(auto_now_add=True)

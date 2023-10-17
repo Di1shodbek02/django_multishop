@@ -3,14 +3,12 @@ import json
 from django.contrib import messages
 from django.db.models import Q
 from django.http import JsonResponse
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
-from django.views.generic.edit import CreateView, DeleteView
 
 from .form import ProductForm
 from .models import ShoppingCart, Product, Picture
 from .utls import increment_count, decrement_count
-from django.contrib.auth.decorators import login_required
 
 
 class HomeView(View):
@@ -191,3 +189,39 @@ class DetailView(View):
             messages.info(request, "Added successfully!")
             return redirect('/cart')
         return redirect('/cart')
+
+
+from django.shortcuts import render
+
+# Create your views here.
+
+
+from django.http import JsonResponse
+from django.views import View
+from .models import Product, Like
+
+
+class LikeView(View):
+    def post(self, request, product_id):
+        user = request.user
+
+        try:
+            like = Like.objects.get(user=user, product_id=product_id)
+            # Foydalanuvchi allaqachon "like" qilgan
+            like.delete()
+            liked = False  # Maxsulotni "like" qilishni bekor qilganligini belgilash
+        except Like.DoesNotExist:
+            # Foydalanuvchi maxsulotni hali "like" qilmagan
+            like = Like(user=user, product_id=product_id)
+            like.save()
+            liked = True  # Maxsulotni "like" qilganligini belgilash
+
+        # Maxsulotning yangi "like" san'ati
+        like_count = Like.objects.filter(product_id=product_id).count()
+
+        response_data = {
+            'liked': liked,
+            'like_count': like_count,
+        }
+
+        return JsonResponse(response_data)
